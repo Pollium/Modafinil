@@ -15,7 +15,8 @@
     "@heroui/react": "^3.2.2",
     "@modafinil/contracts": "workspace:*",
     "alova": "^3.5.2",
-    "lucide-react": "^1.24.0"
+    "lucide-react": "^1.24.0",
+    "zustand": "^5.0.14"
   },
   "peerDependencies": {
     "react": "^19.2.7",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "oxlint": "^1.71.0",
     "typescript": "~6.0.2"
   }
