@@ -1,10 +1,11 @@
+import BaseController from '../controllers/BaseController';
 import RuntimeError from '../errors/RuntimeError';
 import BaseGateway from '../gateway/BaseGateway';
 import BaseQueue from '../queues/BaseQueue';
 import { ApiError } from '@modafinil/contracts/shared/http';
 import { LogLevel } from '../contracts/logging';
 import { eventBus } from '../events/EventBus';
-import { Discovered, MountedController } from '../services/ModuleDiscovery';
+import { Discovered } from '../services/ModuleDiscovery';
 import { logger } from '../utils/Logger';
 import Fastify, { LogController, FastifyInstance, FastifyBaseLogger } from 'fastify';
 import { DataSource } from 'typeorm';
@@ -61,7 +62,7 @@ export default class Application{
 
         this.#registerErrorHandler();
         this.#registerRequestLogging();
-        await this.#mountControllers(discovered.controllers);
+        this.#mountControllers(discovered.controllers);
         this.#app.get('/health', async () => ({ status: 'ok' }));
         this.#mountGateways(discovered.gateways);
         if(startQueues) this.#startQueues(discovered.queues);
@@ -106,9 +107,9 @@ export default class Application{
         });
     }
 
-    async #mountControllers(controllers: MountedController[]){
-        for(const { prefix, Controller } of controllers){
-            await new Controller().register(this.#app, prefix);
+    #mountControllers(controllers: Array<new () => BaseController>){
+        for(const Controller of controllers){
+            new Controller().register(this.#app);
         }
     }
 

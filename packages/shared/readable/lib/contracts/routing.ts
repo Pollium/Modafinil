@@ -5,7 +5,6 @@ export interface RouteDefinition{
     path: string;
     method: HttpMethod;
     handlerName: string | symbol;
-    absolute: boolean;
 }
 
 export type Handler = (

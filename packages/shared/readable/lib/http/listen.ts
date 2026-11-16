@@ -5,9 +5,9 @@ export interface ListenTarget{
     stop(): Promise<void>;
 }
 
-export const listen = (app: ListenTarget, failed = 'Failed to start server') => {
+export const listen = (app: ListenTarget) => {
     app.start().catch((err) => {
-        logger.error(failed, err);
+        logger.error('Failed to start server', err);
         process.exit(1);
     });
 

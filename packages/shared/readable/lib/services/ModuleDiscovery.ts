@@ -1,18 +1,12 @@
 import BaseController from '../controllers/BaseController';
 import BaseGateway from '../gateway/BaseGateway';
 import BaseQueue from '../queues/BaseQueue';
-import { getControllerPrefix } from '../decorators/controllers/Controller';
 import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-export interface MountedController{
-    prefix: string;
-    Controller: new () => BaseController;
-}
-
 export interface Discovered{
-    controllers: MountedController[];
+    controllers: Array<new () => BaseController>;
     entities: Function[];
     queues: Array<new () => BaseQueue>;
     gateways: Array<new () => BaseGateway>;
@@ -32,11 +26,7 @@ export default class ModuleDiscovery{
         };
 
         for(const name of names){
-            const controllers = await this.#loadDefaults<new () => BaseController>(name, 'controllers');
-            discovered.controllers.push(...controllers.map((Controller) => ({
-                prefix: getControllerPrefix(Controller) ?? `/${name}`,
-                Controller
-            })));
+            discovered.controllers.push(...await this.#loadDefaults<new () => BaseController>(name, 'controllers'));
             discovered.entities.push(...await this.#loadDefaults<Function>(name, 'models'));
             discovered.queues.push(...await this.#loadDefaults<new () => BaseQueue>(name, 'queues'));
             discovered.gateways.push(...await this.#loadDefaults<new () => BaseGateway>(name, 'gateways'));

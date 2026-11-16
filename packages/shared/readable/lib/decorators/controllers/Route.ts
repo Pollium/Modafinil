@@ -1,18 +1,11 @@
 import ClassMetadata from '../../utils/ClassMetadata';
-import { Endpoint, HttpMethod } from '@modafinil/contracts/shared/routing';
+import { Endpoint } from '@modafinil/contracts/shared/routing';
 import { RouteDefinition } from '../../contracts/routing';
 
 export const routesByController = new ClassMetadata<RouteDefinition>();
 
-export const Route = <I, O>(
-    route: string | Endpoint<I, O>,
-    method: HttpMethod = 'GET'
-): MethodDecorator => {
+export const Route = <I, O>(endpoint: Endpoint<I, O>): MethodDecorator => {
     return (target, handlerName) => {
-        const definition = typeof route === 'string'
-            ? { path: route, method, absolute: false }
-            : { path: route.path, method: route.method, absolute: true };
-
-        routesByController.append(target.constructor, { ...definition, handlerName });
+        routesByController.append(target.constructor, { path: endpoint.path, method: endpoint.method, handlerName });
     };
 };
