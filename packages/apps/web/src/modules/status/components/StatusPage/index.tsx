@@ -2,10 +2,9 @@ import BeatLane from '@/modules/status/components/BeatLane';
 import BoardSkeleton from '@/modules/status/components/BoardSkeleton';
 import CheckedAgo from '@/modules/status/components/CheckedAgo';
 import QueryState from '@modafinil/ui/components/QueryState';
-import { statusApi } from '@/modules/status/api/api';
 import { Board } from '@modafinil/contracts/status/domain';
-import { useQuery } from '@modafinil/ui/hooks/api/use-query';
 import { useThemeStore } from '@modafinil/ui/store/theme';
+import { useLiveBoard } from '@/modules/status/hooks/use-live-board';
 import { HEADLINE, percent } from '@/modules/status/utils/headline';
 import { useRef, useState } from 'react';
 
@@ -18,7 +17,7 @@ interface Scrub{
 }
 
 const StatusPage = () => {
-    const board = useQuery(statusApi.board);
+    const board = useLiveBoard();
     const theme = useThemeStore((state) => state.theme);
     const toggle = useThemeStore((state) => state.toggle);
     const tracks = useRef<HTMLDivElement>(null);
