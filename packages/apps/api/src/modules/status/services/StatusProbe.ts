@@ -1,4 +1,6 @@
 import Beat from '../models/Beat';
+import StatusBoard from './StatusBoard';
+import { eventBus } from '@readable/events/EventBus';
 import { BeatSample } from '@modafinil/contracts/status/domain';
 import { ProbeResult } from '../contracts/domain/probe';
 import { MonitorConfig } from '@/shared/monitors';
@@ -15,6 +17,8 @@ const minuteOf = (at: Date): Date => {
 };
 
 export default class StatusProbe{
+    #board = new StatusBoard();
+
     async ping(monitor: MonitorConfig): Promise<boolean>{
         try{
             const response = await fetch(monitor.url, { signal: AbortSignal.timeout(config.probeTimeoutMs) });
@@ -48,5 +52,6 @@ export default class StatusProbe{
         const results = await Promise.all(config.monitors.map((monitor) => this.check(monitor)));
         await Promise.all(results.map((result) => this.record(result)));
         await this.prune();
+        eventBus.emit('status.board.refreshed', { board: await this.#board.read() });
     }
 }
