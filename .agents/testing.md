@@ -15,7 +15,7 @@ cd packages/apps/api && npx vitest run        # one package; never from the repo
 - `packages/apps/api` needs Postgres only. `tests/setup.ts` sets the env (three `.test` monitors) and gives each Vitest
   pool slot its own schema (`api_test_1`, `api_test_2`, … through
   `DATABASE_SCHEMA`), so files run in parallel and never touch the `public` schema your dev data lives in.
-- `packages/shared/readable` needs Postgres and Redis: its `Application` and `BaseQueue` suites use the real Redis.
+- `packages/shared/readable` needs Redis only: its `BaseQueue` suite uses the real Redis.
 - The web and ui have no tests. Check them by building and by looking at the page ([web.md](web.md)).
 
 `vite.config.ts` raises `hookTimeout` to 60 s, because `useApp()` builds the whole app through the typia transform and a

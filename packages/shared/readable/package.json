@@ -12,7 +12,6 @@
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@fastify/cors": "^11.3.0",
     "@fastify/websocket": "11.3.0",
     "@modafinil/contracts": "workspace:*",
     "bullmq": "^5.80.6",

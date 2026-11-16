@@ -5,7 +5,7 @@ import { monitorsFrom } from './monitors';
 import { probeTimeoutFrom } from './probe-timeout';
 
 export const config = {
-    ...serviceConfig('https://localhost:5177'),
+    ...serviceConfig(),
     redis: redisFromEnv(),
     monitors: monitorsFrom(requiredEnv('MONITORS')),
     probeTimeoutMs: probeTimeoutFrom(optionalEnv('PROBE_TIMEOUT_MS'))

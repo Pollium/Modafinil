@@ -1,12 +1,8 @@
 import { ReadableDatabaseConfig, ReadableRedisConfig } from './config';
 import { optionalEnv, requiredEnv } from './utils/env';
 
-export const serviceConfig = (corsFallback: string) => ({
+export const serviceConfig = () => ({
     port: Number(requiredEnv('PORT')),
-    corsOrigins: (optionalEnv('CORS_ORIGIN') ?? corsFallback)
-        .split(',')
-        .map((origin) => origin.trim())
-        .filter((origin) => origin !== ''),
     database: {
         url: requiredEnv('DATABASE_URL'),
         schema: optionalEnv('DATABASE_SCHEMA')

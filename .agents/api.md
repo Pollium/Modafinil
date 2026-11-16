@@ -33,7 +33,6 @@ A file outside those folders is never mounted, and a test file inside one would 
 | `REDIS_HOST`, `REDIS_PORT` | the scheduler and `modafinil:events` |
 | `MONITORS` | JSON list of `{ id, name, url, blurb?, anyStatus? }`, in display order |
 | `PROBE_TIMEOUT_MS` | per fetch, default 5000; anything but whole milliseconds fails the boot |
-| `CORS_ORIGIN` | comma list; only matters when the page is served from another origin |
 | `LOG_LEVEL`, `LOG_PRETTY` | pino |
 
 `MONITORS` fails the boot with `Config::InvalidEnv:…` on unknown fields, a url that is not `http(s)://`, an empty list or

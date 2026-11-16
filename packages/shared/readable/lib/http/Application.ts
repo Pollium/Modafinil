@@ -1,9 +1,7 @@
-import cors from '@fastify/cors';
 import RuntimeError from '../errors/RuntimeError';
 import BaseGateway from '../gateway/BaseGateway';
 import BaseQueue from '../queues/BaseQueue';
 import { ApiError } from '@modafinil/contracts/shared/http';
-import { HttpMethod } from '@modafinil/contracts/shared/routing';
 import { LogLevel } from '../contracts/logging';
 import { eventBus } from '../events/EventBus';
 import { Discovered, MountedController } from '../services/ModuleDiscovery';
@@ -22,16 +20,12 @@ export interface ApplicationLog{
 
 export interface ApplicationOptions{
     port: number;
-    corsOrigins: string[];
     log: ApplicationLog;
     discover: () => Promise<Discovered>;
     createDataSource: (entities: Function[]) => DataSource;
     plugins?: (app: FastifyInstance) => Promise<void>;
     afterDatabase?: () => Promise<void>;
 }
-
-const CORS_METHODS: HttpMethod[] = ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE'];
-const PRIVATE_NETWORKS = ['loopback', 'linklocal', 'uniquelocal'];
 
 export default class Application{
     #app!: FastifyInstance;
@@ -54,15 +48,9 @@ export default class Application{
         });
         this.#app = Fastify({
             loggerInstance: logger.raw as FastifyBaseLogger,
-            logController: new LogController({ disableRequestLogging: true }),
-            trustProxy: PRIVATE_NETWORKS
+            logController: new LogController({ disableRequestLogging: true })
         });
 
-        await this.#app.register(cors, {
-            origin: this.#options.corsOrigins,
-            credentials: true,
-            methods: CORS_METHODS
-        });
         if(this.#options.plugins) await this.#options.plugins(this.#app);
 
         const discovered = await this.#options.discover();

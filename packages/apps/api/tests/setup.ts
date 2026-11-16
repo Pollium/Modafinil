@@ -7,7 +7,6 @@ Object.assign(process.env, {
     PORT: '3004',
     DATABASE_URL: databaseUrl,
     DATABASE_SCHEMA: schema,
-    CORS_ORIGIN: 'http://localhost:5177',
     LOG_LEVEL: 'silent',
     LOG_PRETTY: 'false',
     REDIS_HOST: 'localhost',
