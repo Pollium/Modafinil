@@ -11,7 +11,12 @@ Object.assign(process.env, {
     LOG_LEVEL: 'silent',
     LOG_PRETTY: 'false',
     REDIS_HOST: 'localhost',
-    REDIS_PORT: '6391'
+    REDIS_PORT: '6391',
+    MONITORS: JSON.stringify([
+        { id: 'api', name: 'API', url: 'http://api.test/health', blurb: 'api.example.com' },
+        { id: 'site', name: 'Site', url: 'http://site.test/' },
+        { id: 'storage', name: 'Storage', url: 'http://storage.test/', anyStatus: true }
+    ])
 });
 
 const client = new pg.Client({ connectionString: databaseUrl });
