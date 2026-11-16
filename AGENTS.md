@@ -42,6 +42,8 @@ pnpm typecheck && pnpm lint && pnpm test      # the gates a change must pass
 docker compose up -d --build                  # the self-hosted stack on :8080, monitors in docker-compose.yml
 ```
 
+`compose.quantum.yml` is the production stack, deployed on the Quantum PaaS with the real monitor list.
+
 This file is a router, not a manual. Read the file that matches your task before writing code.
 
 | If you are going to… | Read |
