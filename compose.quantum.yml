@@ -31,7 +31,9 @@ services:
         {"id":"iam-server","name":"IAM Server","url":"https://server.iam.pollium.io/health","blurb":"server.iam.pollium.io"},
         {"id":"gateway","name":"AI Gateway","url":"https://gateway.pollium.io/health","blurb":"gateway.pollium.io"},
         {"id":"mail","name":"Mail","url":"https://mail.pollium.io","blurb":"mail.pollium.io"},
-        {"id":"storage","name":"Storage","url":"https://storage.pollium.io/health/ready","blurb":"storage.pollium.io"}]
+        {"id":"storage","name":"Storage","url":"https://storage.pollium.io/health/ready","blurb":"storage.pollium.io"},
+        {"id":"foundry","name":"Foundry","url":"https://foundry.pollium.io","blurb":"foundry.pollium.io"},
+        {"id":"foundry-api","name":"Foundry API","url":"https://server.foundry.pollium.io/health","blurb":"server.foundry.pollium.io"}]
     depends_on:
       - postgres
       - redis
