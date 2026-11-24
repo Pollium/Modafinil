@@ -124,52 +124,6 @@ importers:
         specifier: ~6.0.2
         version: 6.0.3
 
-  packages/shared/readable:
-    dependencies:
-      '@fastify/websocket':
-        specifier: 11.3.0
-        version: 11.3.0
-      '@modafinil/contracts':
-        specifier: workspace:*
-        version: link:../contracts
-      bullmq:
-        specifier: ^5.80.6
-        version: 5.80.6
-      fastify:
-        specifier: ^5.12.5
-        version: 5.12.5
-      ioredis:
-        specifier: ^5.11.1
-        version: 5.11.1
-      pino:
-        specifier: ^10.3.1
-        version: 10.3.1
-      typeorm:
-        specifier: ^1.1.0
-        version: 1.1.0(ioredis@5.11.1)(pg@8.22.0)
-      uuid:
-        specifier: ^14.0.2
-        version: 14.0.2
-    devDependencies:
-      '@types/node':
-        specifier: ^26.1.1
-        version: 26.1.1
-      '@types/ws':
-        specifier: ^8.18.1
-        version: 8.18.1
-      oxlint:
-        specifier: ^1.71.0
-        version: 1.74.0
-      reflect-metadata:
-        specifier: ^0.2.2
-        version: 0.2.2
-      typescript:
-        specifier: ~6.0.2
-        version: 6.0.3
-      vitest:
-        specifier: ^4.1.10
-        version: 4.1.10(@types/node@26.1.1)(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0))
-
   packages/shared/ui:
     dependencies:
       '@heroui/react':
