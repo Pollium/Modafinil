@@ -116,6 +116,10 @@ importers:
         version: 8.1.5(@types/node@26.1.1)(jiti@2.7.0)
 
   packages/shared/contracts:
+    dependencies:
+      '@pollium/readable-contracts':
+        specifier: ^0.2.0
+        version: 0.2.0
     devDependencies:
       oxlint:
         specifier: ^1.71.0
@@ -132,6 +136,9 @@ importers:
       '@modafinil/contracts':
         specifier: workspace:*
         version: link:../contracts
+      '@pollium/readable-contracts':
+        specifier: ^0.2.0
+        version: 0.2.0
       alova:
         specifier: ^3.5.2
         version: 3.5.2
