@@ -1,4 +1,4 @@
-import { ApiError as ApiErrorPayload, ApiResponse } from '@modafinil/contracts/shared/http';
+import { ApiError as ApiErrorPayload, ApiResponse } from '@pollium/readable-contracts/http';
 import { ApiError } from '../services/ApiError';
 
 export const NETWORK_FAILED = 'Network request failed';

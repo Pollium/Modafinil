@@ -1,4 +1,4 @@
-import { ConfigError } from '@readable/errors/ConfigError';
+import { ConfigError } from '@pollium/readable/app/errors';
 import typia, { IValidation, tags } from 'typia';
 
 export interface MonitorConfig{

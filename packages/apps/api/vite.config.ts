@@ -9,7 +9,6 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
-            '@readable': fileURLToPath(new URL('../../shared/readable/lib', import.meta.url)),
             '@tests': fileURLToPath(new URL('./tests', import.meta.url))
         }
     },

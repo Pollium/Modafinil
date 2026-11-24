@@ -1,4 +1,4 @@
-import BaseModel from '@readable/models/BaseModel';
+import { BaseModel } from '@pollium/readable/database/models';
 import { BeatSample } from '@modafinil/contracts/status/domain';
 import { Entity, Column, Unique } from 'typeorm';
 

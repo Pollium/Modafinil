@@ -1,6 +1,6 @@
 import Beat from '../models/Beat';
 import StatusBoard from './StatusBoard';
-import { eventBus } from '@readable/events/EventBus';
+import { eventBus } from '@pollium/readable/events/EventBus';
 import { BeatSample } from '@modafinil/contracts/status/domain';
 import { ProbeResult } from '../contracts/domain/probe';
 import { MonitorConfig } from '@/shared/monitors';

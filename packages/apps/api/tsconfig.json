@@ -1,9 +1,8 @@
 {
-  "extends": "../../shared/readable/tsconfig.base.json",
+  "extends": "../tsconfig.api.base.json",
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
-      "@readable/*": ["../../shared/readable/lib/*"],
       "@tests/*": ["./tests/*"]
     }
   },

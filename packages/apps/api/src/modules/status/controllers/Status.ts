@@ -1,5 +1,4 @@
-import BaseController from '@readable/controllers/BaseController';
-import { Route } from '@readable/decorators/controllers/Route';
+import BaseController, { Route } from '@pollium/readable/http/Controller';
 import { statusRoutes } from '@modafinil/contracts/status/routes';
 import { liveBoard } from '../services/LiveBoard';
 

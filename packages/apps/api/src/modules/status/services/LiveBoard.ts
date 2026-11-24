@@ -1,5 +1,5 @@
 import StatusBoard, { boardOf } from './StatusBoard';
-import { eventBus } from '@readable/events/EventBus';
+import { eventBus } from '@pollium/readable/events/EventBus';
 
 class LiveBoard{
     #board = boardOf([], new Date());
