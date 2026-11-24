@@ -11,7 +11,7 @@
   "dependencies": {
     "@fastify/websocket": "11.3.0",
     "@modafinil/contracts": "workspace:*",
-    "@modafinil/readable": "workspace:*",
+    "@pollium/readable": "^0.2.0",
     "dotenv": "^17.4.2",
     "fastify": "^5.12.5",
     "pg": "^8.22.0",

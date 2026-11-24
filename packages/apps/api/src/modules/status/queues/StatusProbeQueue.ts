@@ -1,7 +1,7 @@
 import StatusProbe from '../services/StatusProbe';
-import BaseQueue from '@readable/queues/BaseQueue';
+import BaseQueue from '@pollium/readable/queues/BaseQueue';
 
-export default class StatusProbeQueue extends BaseQueue{
+export default class StatusProbeQueue extends BaseQueue<void>{
     readonly name = 'status-probe';
 
     protected readonly everyMs = 60_000;

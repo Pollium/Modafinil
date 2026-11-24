@@ -1,16 +1,23 @@
-import { configure } from '@readable/config';
-import { redisFromEnv, serviceConfig } from '@readable/service-config';
-import { optionalEnv, requiredEnv } from '@readable/utils/env';
+import {
+    configure,
+    redisFromEnv,
+    serviceConfig,
+    optionalEnv,
+    requiredEnv
+} from '@pollium/readable/app/config';
 import { monitorsFrom } from './monitors';
 import { probeTimeoutFrom } from './probe-timeout';
 
 export const config = {
-    ...serviceConfig(),
+    ...serviceConfig(''),
     redis: redisFromEnv(),
     monitors: monitorsFrom(requiredEnv('MONITORS')),
     probeTimeoutMs: probeTimeoutFrom(optionalEnv('PROBE_TIMEOUT_MS'))
 } as const;
 
 configure({
-    redis: config.redis
+    name: 'modafinil',
+    jwtSecret: null,
+    redis: config.redis,
+    storage: null
 });

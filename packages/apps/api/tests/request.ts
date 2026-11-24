@@ -1,1 +1,1 @@
-export { request } from '@readable/testing/request';
+export { request } from '@pollium/readable/testing/request';

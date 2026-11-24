@@ -1,4 +1,4 @@
-import { ConfigError } from '@readable/errors/ConfigError';
+import { ConfigError } from '@pollium/readable/app/errors';
 
 const DEFAULT_MS = 5000;
 const MAX_MS = 2_147_483_647;

@@ -2,7 +2,7 @@ import Beat from '../models/Beat';
 import StatusBoard from '../services/StatusBoard';
 import StatusProbe from '../services/StatusProbe';
 import { liveBoard } from '../services/LiveBoard';
-import { eventBus } from '@readable/events/EventBus';
+import { eventBus } from '@pollium/readable/events/EventBus';
 import { BeatSample, MonitorState } from '@modafinil/contracts/status/domain';
 import { statusRoutes } from '@modafinil/contracts/status/routes';
 import { useApp } from '@tests/harness';
