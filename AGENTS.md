@@ -7,9 +7,11 @@ last 24 hours as 90 cells per monitor, pushed live over a websocket. pnpm monore
 |---|---|---|
 | `packages/apps/api` (`@modafinil/api`) | the only backend: reads `MONITORS`, probes them on a BullMQ scheduler, stores one `Beat` per monitor and minute, answers `GET /status` from memory and pushes the board on `/status/live` | 3004 |
 | `packages/apps/web` (`@modafinil/web`) | the public page: React + Vite + Tailwind on HeroUI's styles, one page and no router | 5177 |
-| `packages/shared/readable` (`@modafinil/readable`) | the HTTP/WS/queue framework: `Application`, module discovery, decorators, errors, `BaseModel`, queues, the event bus | — |
 | `packages/shared/contracts` (`@modafinil/contracts`) | the board, its routes and its live frame | — |
 | `packages/shared/ui` (`@modafinil/ui`) | the web's plumbing: `call`, `useQuery`, `useChannel` and the socket pool, `QueryState`, the offline banner, the theme store, `mountApp` | — |
+
+The api is built on [`@pollium/readable`](https://github.com/Pollium/Readable), the HTTP/WS/queue framework from npm:
+`Application`, module discovery, decorators, errors, `BaseModel`, queues, the event bus.
 
 Modules are auto-discovered from the filesystem by folder convention — there is no registry file to edit.
 
@@ -58,7 +60,7 @@ This file is a router, not a manual. Read the file that matches your task before
 - **Vitest runs inside the package.** Running it from the repo root picks up every package's config at once.
   `cd packages/apps/api && npx vitest run`.
 - **The web typechecks against the `dist` declarations of contracts and ui.** `tsc -b` in `packages/apps/web` (its
-  `build` script) rebuilds them; the api and readable never emit.
+  `build` script) rebuilds them; the api never emits.
 - **After editing contracts**, clear the api's typia cache (`rm -rf packages/apps/api/node_modules/.cache/unplugin_typia`)
   and restart the web dev server.
 - **`BaseModel` ids default to Postgres 18's `uuidv7()`.** An older Postgres fails at `synchronize`.
