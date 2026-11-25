@@ -1,5 +1,18 @@
 import '@/assets/styles/index.css';
-import StatusPage from '@/modules/status/components/StatusPage';
-import { mountApp } from '@modafinil/ui/app/mount';
+import OfflineBanner from '@modafinil/ui/components/OfflineBanner';
+import { initTheme } from '@modafinil/ui/utils/session/theme';
+import { mount } from '@pollium/readable-react/app/mount';
 
-mountApp(<StatusPage />);
+initTheme();
+
+mount({
+    name: 'modafinil',
+    apiUrl: window.location.origin,
+    pages: import.meta.glob('/src/modules/*/pages/**/{index,layout}.tsx'),
+    wrap: (app) => (
+        <>
+            {app}
+            <OfflineBanner />
+        </>
+    )
+});

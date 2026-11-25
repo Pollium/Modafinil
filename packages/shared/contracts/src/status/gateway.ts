@@ -1,8 +1,7 @@
+import { gateway } from '@pollium/readable-contracts/gateway';
 import { Board } from './domain';
 
-export const statusGateway = {
-    channel: '/status/live'
-} as const;
+export const statusGateway = gateway<StatusFrames>('/status/live');
 
 export interface BoardFrame{
     type: 'status.board';
