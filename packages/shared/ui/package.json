@@ -12,9 +12,7 @@
   },
   "dependencies": {
     "@heroui/react": "^3.2.2",
-    "@modafinil/contracts": "workspace:*",
-    "@pollium/readable-contracts": "^0.2.0",
-    "alova": "^3.5.2",
+    "@pollium/readable-react": "^0.4.0",
     "lucide-react": "^1.24.0",
     "zustand": "^5.0.14"
   },

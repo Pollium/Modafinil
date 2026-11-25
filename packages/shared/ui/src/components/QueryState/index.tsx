@@ -1,6 +1,6 @@
 import ErrorState from '../ErrorState';
 import RefreshFailed from '../RefreshFailed';
-import { Query } from '../../contracts/api';
+import { Query } from '@pollium/readable-react/query/useQuery';
 import { ReactNode } from 'react';
 
 interface QueryStateProps<T>{

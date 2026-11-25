@@ -1,24 +1,12 @@
 import { Board } from '@modafinil/contracts/status/domain';
 import { statusGateway } from '@modafinil/contracts/status/gateway';
-import { Query } from '@modafinil/ui/contracts/api';
-import { useQuery } from '@modafinil/ui/hooks/api/use-query';
-import { useChannel } from '@modafinil/ui/hooks/socket/use-channel';
-import { statusApi } from '@/modules/status/api/api';
-import '@/modules/status/contracts/channel';
-import { useState } from 'react';
+import { statusRoutes } from '@modafinil/contracts/status/routes';
+import { useChannel } from '@pollium/readable-react/live/useChannel';
+import { Query, useQuery } from '@pollium/readable-react/query/useQuery';
 
 export const useLiveBoard = (): Query<Board> => {
-    const loaded = useQuery(statusApi.board);
-    const [pushed, setPushed] = useState<Board | null>(null);
+    const board = useQuery(statusRoutes.board);
+    useChannel(statusGateway, { 'status.board': board.set });
 
-    useChannel(statusGateway.channel, { 'status.board': setPushed });
-
-    if(pushed === null) return loaded;
-
-    return {
-        data: pushed,
-        loading: false,
-        error: undefined,
-        reload: loaded.reload
-    };
+    return board;
 };
