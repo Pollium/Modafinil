@@ -80,12 +80,18 @@ importers:
       '@modafinil/ui':
         specifier: workspace:*
         version: link:../../shared/ui
+      '@pollium/readable-react':
+        specifier: ^0.4.0
+        version: 0.4.0(react-dom@19.2.7(react@19.2.7))(react-router-dom@7.18.7(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)(typia@12.1.1(@types/node@26.1.1)(typescript@6.0.3))(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0))(vitest@4.1.10(@types/node@26.1.1)(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0)))
       react:
         specifier: ^19.2.7
         version: 19.2.7
       react-dom:
         specifier: ^19.2.7
         version: 19.2.7(react@19.2.7)
+      typia:
+        specifier: ^12.1.1
+        version: 12.1.1(@types/node@26.1.1)(typescript@6.0.3)
     devDependencies:
       '@tailwindcss/vite':
         specifier: ^4.3.2
@@ -114,6 +120,9 @@ importers:
       vite:
         specifier: ^8.1.5
         version: 8.1.5(@types/node@26.1.1)(jiti@2.7.0)
+      vitest:
+        specifier: ^4.1.10
+        version: 4.1.10(@types/node@26.1.1)(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0))
 
   packages/shared/contracts:
     dependencies:
@@ -546,6 +555,23 @@ packages:
 
   '@pollium/readable-contracts@0.4.0':
     resolution: {integrity: sha512-6PJV4HYCs2nCXRVPK+AORIY/KmYIvEKVWD1BKnesu3foVA40M71zTfibJJJSrYSHO/+xqpL7jzy+/P8hDkKyhA==}
+
+  '@pollium/readable-react@0.4.0':
+    resolution: {integrity: sha512-ebeSpqtH49QYlGYAXSVPF67uZfho7bb98mHsLil3ivb2+3Wn7HZKUFW0mFuzjwLk1hbRULxLLOHWi/OcJie8gA==}
+    peerDependencies:
+      react: ^19.2.0
+      react-dom: ^19.2.0
+      react-router-dom: ^7.18.0
+      typia: ^12.1.1
+      vite: ^8.1.5
+      vitest: ^4.1.10
+    peerDependenciesMeta:
+      typia:
+        optional: true
+      vite:
+        optional: true
+      vitest:
+        optional: true
 
   '@pollium/readable@0.2.0':
     resolution: {integrity: sha512-K3Cvxnf3KhalcXLb8pvfvtslE9r6WQCo+OysyXRl4TEmAJWGF8ZN/jKYvl4ogGTHkVYa+IstCYQA+gJEX7lCcw==}
@@ -1221,6 +1247,10 @@ packages:
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
+
+  cookie@1.1.1:
+    resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
+    engines: {node: '>=18'}
 
   cookie@2.0.2:
     resolution: {integrity: sha512-SL0cVuEdETEp7pN0FuZb01toc3vnODEfVUCooxG1SJN0yIirh7JMb9X9bvfCFf0vzzbT68RdbKDHYTiWy7a7iw==}
@@ -1904,6 +1934,26 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
+  react-router-dom@7.18.7:
+    resolution: {integrity: sha512-EBWBKV1TjvScebAIvidowN0Bfh9Bg7p54IDBRVJkFXz0wBKTBblDNLxUvCewx/GdzTiC7VWV/MOjWqsLWEMygA==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+
+  react-router@7.18.7:
+    resolution: {integrity: sha512-nXl672FFobymVY/Ywbo0DnlXV/+VXOB5pOslCeuVqoegwwL7sau2yASdyGoWHvPRxAoqUBrAiFZRdli4nT7Wow==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@types/react': '>=18'
+      react: '>=18'
+      react-dom: '>=18'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react-dom:
+        optional: true
+
   react-stately@3.51.0:
     resolution: {integrity: sha512-YJcmkAXu2XOQP97hO/qz/cC3qv9kni3oVhwBlxWr358BHePJUpY15XwL3YSRMKxYt4EkslPqAz11JRirMfANGw==}
     peerDependencies:
@@ -2005,6 +2055,9 @@ packages:
     resolution: {integrity: sha512-9lpSSU4Mly3mrtruwLs1eLK6+gzbzqeBFwRNjIjE+9LuDpWdYctrQlQ3ej1Ilgi7gknpsTRnPoLP8DpCHqHIJw==}
     engines: {node: '>=10'}
     hasBin: true
+
+  set-cookie-parser@2.7.3:
+    resolution: {integrity: sha512-irZHtTqurLna57KQG/s+fzOwv/J6XSH4cs8M/vsrY3uCaQ3S6+QJguAH0WdN47SXlk82voMZ4naWMQf8fdEoIg==}
 
   set-cookie-parser@3.2.2:
     resolution: {integrity: sha512-df017qMeYuXo4emL09nlyMpi2i2MtEIKS/6jtXH3vmjFgIRsOi852/5RmhJ4EkvN3ZF8jXadM/EkTPXgc8yPIw==}
@@ -2833,6 +2886,21 @@ snapshots:
 
   '@pollium/readable-contracts@0.4.0': {}
 
+  '@pollium/readable-react@0.4.0(react-dom@19.2.7(react@19.2.7))(react-router-dom@7.18.7(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)(typia@12.1.1(@types/node@26.1.1)(typescript@6.0.3))(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0))(vitest@4.1.10(@types/node@26.1.1)(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0)))':
+    dependencies:
+      '@pollium/readable-contracts': 0.4.0
+      '@typia/unplugin': 12.1.1(typia@12.1.1(@types/node@26.1.1)(typescript@6.0.3))(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0))
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
+      react-router-dom: 7.18.7(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+    optionalDependencies:
+      typia: 12.1.1(@types/node@26.1.1)(typescript@6.0.3)
+      vite: 8.1.5(@types/node@26.1.1)(jiti@2.7.0)
+      vitest: 4.1.10(@types/node@26.1.1)(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0))
+    transitivePeerDependencies:
+      - rollup
+      - svelte
+
   '@pollium/readable@0.2.0(@types/node@26.1.1)(fastify@5.12.5)(pg@8.22.0)(typeorm@1.1.0(ioredis@5.11.1)(pg@8.22.0))(typescript@6.0.3)(vitest@4.1.10(@types/node@26.1.1)(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0)))':
     dependencies:
       '@aws-sdk/client-s3': 3.1177.0
@@ -3436,6 +3504,8 @@ snapshots:
   consola@3.4.2: {}
 
   convert-source-map@2.0.0: {}
+
+  cookie@1.1.1: {}
 
   cookie@2.0.2: {}
 
@@ -4106,6 +4176,23 @@ snapshots:
 
   react-is@16.13.1: {}
 
+  react-router-dom@7.18.7(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+    dependencies:
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
+      react-router: 7.18.7(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+    transitivePeerDependencies:
+      - '@types/react'
+
+  react-router@7.18.7(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+    dependencies:
+      cookie: 1.1.1
+      react: 19.2.7
+      set-cookie-parser: 2.7.3
+    optionalDependencies:
+      '@types/react': 19.2.17
+      react-dom: 19.2.7(react@19.2.7)
+
   react-stately@3.51.0(react@19.2.7):
     dependencies:
       '@internationalized/date': 3.12.4
@@ -4204,6 +4291,8 @@ snapshots:
   semver@7.8.5: {}
 
   semver@7.8.6: {}
+
+  set-cookie-parser@2.7.3: {}
 
   set-cookie-parser@3.2.2: {}
 

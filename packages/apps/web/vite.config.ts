@@ -1,10 +1,9 @@
-import { fileURLToPath, URL } from 'node:url';
-import { defineConfig } from 'vite';
+import { readableConfig } from '@pollium/readable-react/app/vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
-export default defineConfig({
+export default readableConfig({
     plugins: [
         react(),
         tailwindcss(),
@@ -20,10 +19,5 @@ export default defineConfig({
                 ws: true
             }
         }
-    },
-    resolve: {
-        alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
-        }
     }
-});
+}, { api: 'http://localhost:3004' });
