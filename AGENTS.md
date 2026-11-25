@@ -6,12 +6,14 @@ last 24 hours as 90 cells per monitor, pushed live over a websocket. pnpm monore
 | Package | What it is | Port |
 |---|---|---|
 | `packages/apps/api` (`@modafinil/api`) | the only backend: reads `MONITORS`, probes them on a BullMQ scheduler, stores one `Beat` per monitor and minute, answers `GET /status` from memory and pushes the board on `/status/live` | 3004 |
-| `packages/apps/web` (`@modafinil/web`) | the public page: React + Vite + Tailwind on HeroUI's styles, one page and no router | 5177 |
-| `packages/shared/contracts` (`@modafinil/contracts`) | the board, its routes and its live frame | — |
-| `packages/shared/ui` (`@modafinil/ui`) | the web's plumbing: `call`, `useQuery`, `useChannel` and the socket pool, `QueryState`, the offline banner, the theme store, `mountApp` | — |
+| `packages/apps/web` (`@modafinil/web`) | the public page: React + Vite + Tailwind on HeroUI's styles, one public page mounted by `@pollium/readable-react` | 5177 |
+| `packages/shared/contracts` (`@modafinil/contracts`) | the board, its routes and its gateway | — |
+| `packages/shared/ui` (`@modafinil/ui`) | the web's looks: `QueryState` over readable-react's, `ErrorState`, `RefreshFailed`, the offline banner and the theme store | — |
 
 The api is built on [`@pollium/readable`](https://github.com/Pollium/Readable), the HTTP/WS/queue framework from npm:
-`Application`, module discovery, decorators, errors, `BaseModel`, queues, the event bus.
+`Application`, module discovery, decorators, errors, `BaseModel`, queues, the event bus. The web is built on
+`@pollium/readable-react`: `mount`, `useQuery`, `useChannel`, its Vite config and its tsconfig. Its guide ships at
+`node_modules/@pollium/readable-react/AGENTS.md`.
 
 Modules are auto-discovered from the filesystem by folder convention — there is no registry file to edit.
 
@@ -59,8 +61,10 @@ This file is a router, not a manual. Read the file that matches your task before
 
 - **Vitest runs inside the package.** Running it from the repo root picks up every package's config at once.
   `cd packages/apps/api && npx vitest run`.
-- **The web typechecks against the `dist` declarations of contracts and ui.** `tsc -b` in `packages/apps/web` (its
-  `build` script) rebuilds them; the api never emits.
+- **The web reads the sources of contracts and ui.** Nothing emits declarations: `tsc --noEmit` in `packages/apps/web`
+  checks ui and contracts through their package exports, so a type error there fails the web's typecheck.
+- **The web's api url is its own origin.** `mount` gets `apiUrl: window.location.origin`, because the api answers at
+  `/status`, not under readable-react's default `/api`.
 - **After editing contracts**, clear the api's typia cache (`rm -rf packages/apps/api/node_modules/.cache/unplugin_typia`)
   and restart the web dev server.
 - **`BaseModel` ids default to Postgres 18's `uuidv7()`.** An older Postgres fails at `synchronize`.
