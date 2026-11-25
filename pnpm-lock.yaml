@@ -118,8 +118,8 @@ importers:
   packages/shared/contracts:
     dependencies:
       '@pollium/readable-contracts':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.4.0
+        version: 0.4.0
     devDependencies:
       oxlint:
         specifier: ^1.71.0
@@ -543,6 +543,9 @@ packages:
 
   '@pollium/readable-contracts@0.2.0':
     resolution: {integrity: sha512-WzBFRNhCnjFOxFbcZz7SX6Kp+q+DqkpMQfOwxFP/dK+IxHUf6tXaTRcMxuUGxPpoy8Qfp7V3PYsab1VyObTR9A==}
+
+  '@pollium/readable-contracts@0.4.0':
+    resolution: {integrity: sha512-6PJV4HYCs2nCXRVPK+AORIY/KmYIvEKVWD1BKnesu3foVA40M71zTfibJJJSrYSHO/+xqpL7jzy+/P8hDkKyhA==}
 
   '@pollium/readable@0.2.0':
     resolution: {integrity: sha512-K3Cvxnf3KhalcXLb8pvfvtslE9r6WQCo+OysyXRl4TEmAJWGF8ZN/jKYvl4ogGTHkVYa+IstCYQA+gJEX7lCcw==}
@@ -2827,6 +2830,8 @@ snapshots:
   '@pinojs/redact@0.4.0': {}
 
   '@pollium/readable-contracts@0.2.0': {}
+
+  '@pollium/readable-contracts@0.4.0': {}
 
   '@pollium/readable@0.2.0(@types/node@26.1.1)(fastify@5.12.5)(pg@8.22.0)(typeorm@1.1.0(ioredis@5.11.1)(pg@8.22.0))(typescript@6.0.3)(vitest@4.1.10(@types/node@26.1.1)(vite@8.1.5(@types/node@26.1.1)(jiti@2.7.0)))':
     dependencies:
